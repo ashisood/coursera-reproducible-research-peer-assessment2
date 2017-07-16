@@ -44,8 +44,10 @@ glimpse(total_steps_per_day)
 1. Make a histogram of the total number of steps taken each day
 
 ```r
-ggplot(total_steps_per_day, aes(x=total.steps)) +
-        geom_histogram(binwidth = 500) + ylab("steps taken per day with binwidth = 500")
+ggplot(total_steps_per_day) +
+        geom_bar(aes(x=date, y = total.steps), stat = "identity") +
+        theme(axis.text.x = element_text(angle = 90, size=8)) +
+        ggtitle("Step taken each day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
@@ -145,7 +147,7 @@ tmp_Median<-median(tmp_total_steps_per_day$total.steps, na.rm = TRUE)
 - Mean = 1.0766189\times 10^{4}
 - Median = 1.0766189\times 10^{4}
 
-5. Analysis of difference between the Activities on weekdays and weekends
+# Analysis of difference between the Activities on weekdays and weekends
 The day of the week was assigned to each date, and then a new factor variable created with two levels, “weekday” and “weekend”, indicating whether a given date is a weekday or a weekend day.
 
 
